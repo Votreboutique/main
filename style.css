@@ -229,4 +229,7 @@ nav {
 .navlinks-container a {
     font-size: 18px;
 }
+.header {
+    flex-direction: column;
+}
 }
