@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="navlinks-container">
+            <a href="#header">Entête</a>
+            <a href="#modeles">Présentation et modeles</a>
+            <a href="#form">Contacts</a>
+        </div>
+    </nav>
+    <div class="header" id="header">
+        <h1>Créez votre présence en ligne dès aujourd'hui</h1>
+        <h3>Bonjour, je m'appelle Mehdi Sedkaoui, j'ai crée ce site afin de vous aider à trouver le site parfait pour votre boutique. Vous pouvez choisir parmis un des modeles suivant en ajustant, bien évidemment, les caractéristiques dont vous avez besoin. Afin de réaliser le site dont votre boutique à besoin, vous devrez remplir le formulaire en bas de la page pour que je puisse commencer à travailler. Le délai est d'environ 1 semaine et un devis vous sera fournit en fonction du modele que vous aurez choisi.</h3>
+    </div>
+
+    <div class="sampleContainer" id="modeles">
+        <h1 class="h1">Les modeles de sites web:</h1>
+        <p>Des caractéristiques comme le nombre de produits/services, ou la taille des textes peuvent etre modifier gratuitement</p>
+        <div class="sampleMain">
+        <div class="sample">
+            <h1>Classique</h1>
+            <div class="box">
+                <img src="siteUn.png" alt="">
+            </div>
+            <h3>Caractéristiques : </h3>
+            <p>-Couleurs au choix</p>
+            <p>-Images au choix</p>
+            <p>-Sites publié</p>
+            <p>-Barres de navigation et bas de page modifiable</p>
+            
+        </div>
+        <div class="sample">
+            <h1>Élegant</h1>
+            <div class="box">
+                <img src="siteDeux.png" alt="">
+            </div>
+            <h3>Caractéristiques : </h3>
+            <p>-Couleurs au choix</p>
+            <p>-Images au choix</p>
+            <p>-Sites publié</p>
+            <p>- Barres de navigation et bas de page modifiable</p>
+            <p>+ Fonts du texte au choix</p>
+            <p>+ Images d'un plan d'ou se trouve la boutique</p>
+            <p>+ Formulaire de contacts</p>
+        </div>
+        <div class="sample">
+            <h1>Intégral</h1>
+            <div class="box">
+                <img src="siteTrois.png" alt="">
+            </div>
+            <h3>Caractéristiques : </h3>
+            <p>-Couleurs au choix</p>
+            <p>-Images au choix</p>
+            <p>-Sites publié</p>
+            <p>- Barres de navigation et bas de page modifiable</p>
+            <p>- Fonts du texte au choix</p>
+            <p>- Images d'un plan d'ou se trouve la boutique</p>
+            <p>- Formulaire de contacts</p>
+            <p>+ Plus d'images</p>
+            <p>+ Liens cliquables sous forme d'image pour la localisation</p>
+        </div>
+    </div>
+        <div class="sample Ex">
+            <h1>Exemples de réalisations</h1>
+            <div class="box">
+                <img src="siteEx.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="autreSpec">
+        <h1>Options Supplémentaires :</h1>
+        <p>-Revendication de votre boutique sur google Maps pour que les utilisateur qui cherchent un mot en rapport avec votre boutique puisse accéder à votre site web en cliquant sur la boutique</p>
+
+    </div>    <div class="form" id="form">
+        <h3>Remplissez ce formulaire pour que je commence à créer votre site</h3>
+        <input type="text" id="name" placeholder="Votre prénom et nom de famille">
+        <input type="email" id="email" placeholder="Votre mail">
+        <input type="text" id="shopName" placeholder="Le nom de votre boutique">
+        <input type="text" id="modele" placeholder="Le modele que vous avez choisi">
+        <input type="text" id="activity" placeholder="Décriver votre activié en quelques mots">
+        <input type="text" id="color" placeholder="Quelle serait la couleur principale de votre site">
+        <textarea name="supp" id="supp" cols="30" rows="10" placeholder="D'autres caractéristiques ?"></textarea>
+        <button id="submit">Envoyer</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+
+    <script type="module">
+        // Your web app's Firebase configuration
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js"; 
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDW0ZfP9LJ93QMwrp9mYb_ldsNYclY5-Gg",
+            authDomain: "boutiquesite-bd48d.firebaseapp.com",
+            projectId: "boutiquesite-bd48d",
+            storageBucket: "boutiquesite-bd48d.appspot.com",
+            messagingSenderId: "533888063660",
+            appId: "1:533888063660:web:fdfb1707855077baebe709"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase();
+        const submit = document.getElementById('submit')
+
+        function submitForm() {
+            const nameValue = document.getElementById('name').value;
+            const emailValue = document.getElementById('email').value;
+            const shopNameValue = document.getElementById('shopName').value;
+            const modeleValue = document.getElementById('modele').value;
+            const colorValue = document.getElementById('color').value;
+            const suppValue = document.getElementById('supp').value;
+            const activityValue = document.getElementById('activity').value;
+
+            set(ref(database, `'${nameValue}'`),{
+                name: nameValue,
+                email: emailValue,
+                shopName: shopNameValue,
+                modele: modeleValue,
+                color: colorValue,
+                supp: suppValue,
+                activité: activityValue
+            })
+            .then(() =>{
+                alert("Merci d'avoir envoyé votre formulaire, je vais commencer à travailler sur votre site");
+            })
+            .catch((error) => {
+                alert("unsuccessfull , error" + error);
+            });
+
+        }
+        submit.addEventListener('click', submitForm)
+    </script>
+</body>
+</html>
