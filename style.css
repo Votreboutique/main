@@ -119,7 +119,6 @@ nav {
     justify-content: center;
     display: flex;
     padding-left: 50px;
-    padding-right:100px;
 }
 .form h3 {
     color: white;
@@ -182,6 +181,10 @@ nav {
     text-align: center;
     margin: 0 auto;
 }
+.form button {
+    font-size: 18px;
+    font-weight: bold;
+}
 
 @media(max-width:600px) {
     
@@ -211,5 +214,8 @@ nav {
 }
 .sampleContainer {
     margin-left: 10px;
+}
+.navlinks-container a {
+    font-size: 18px;
 }
 }
