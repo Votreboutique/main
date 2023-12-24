@@ -81,10 +81,11 @@
             </div>
         </div>
     </div>
-    <!-- <div class="autreSpec">
+    <div class="autreSpec">
         <h1>Options Supplémentaires :</h1>
         <p>-Rendez visible votre site sur google Maps</p>
-    </div>  -->
+        <p>-Possibilité d'ajouter d'autrs pages plus spécifiques dans le site</p>
+    </div> 
 
     <div class="form" id="form">
         <h3>Remplissez ce formulaire pour que je commence à créer votre site</h3>
@@ -148,6 +149,20 @@
 
         }
         submit.addEventListener('click', submitForm)
+
+        const un = document.querySelector(".sampleContainer")
+
+        window.addEventListener('scroll', () => {
+
+        const {scrollTop, clientHeight} = document.documentElement;
+
+         const topElementToTopViewPort = un.getBoundingClientRect().top;
+
+            if(scrollTop > (scrollTop + topElementToTopViewPort).toFixed() - clientHeight * 0.85) {
+                un.classList.add('active')
+            }
+        })
+
     </script>
 </body>
 </html>
